@@ -9,6 +9,7 @@ const path = require ('path');
 
 const allNotes = require('./db/db.json')
 
+//// connect to Json, PORT and Public folder to app
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
@@ -49,32 +50,39 @@ function createNewNote(body, notesArray){
     return newNote;
 }
 
-app.post('/api/notes', (req, res) =>{
+//create note
+app.post('/api/notes', (req, res) => {
     const newNote = createNewNote(req.body, allNotes);
     res.json(newNote);
 });
 
-function deleteNote (id, notesArray) {
-    for (let i = 0; i<notesArray.length; i++){
+//delete notes
+function deleteNote(id, notesArray) {
+    for (let i = 0; i < notesArray.length; i++) {
         let note = notesArray[i];
 
         if (note.id == id) {
-            notesArray.splice (i, 1);
+            notesArray.splice(i, 1);
             fs.writeFileSync(
-                path.join(__dirname, './db/db.json'), 
+                path.join(__dirname, './db/db.json'),
                 JSON.stringify(notesArray, null, 2)
             );
+
             break;
         }
     }
 }
 
-app.delete ('./api.notes/:id', (req, res) =>{
+app.delete('/api/notes/:id', (req, res) => {
     deleteNote(req.params.id, allNotes);
     res.json(true);
 });
+app.get('./notes', (req, res) => {
+    let saved = notes;
+    res.json(saved);
+})
 
 //tell server to listen
 app.listen(PORT, () =>
-    console.log(`App listening at http://localhost:${PORT}`)
+    console.log(`Listening at http://localhost:${PORT}`)
 );
