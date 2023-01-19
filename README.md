@@ -13,12 +13,20 @@ This project was created to allow the user to add, save and delete notes. This a
 ## Usage
 When the user opens the page in their default browser they are presented with a page and a button "Get Started". Once that is clicked they are taken to the notes page where they can add and save their notes.  
 
+https://note-taking01.herokuapp.com/
+
 ![Initial Page](public/assets/Images/Main-Page.jpg)
 ![Page 2](public/assets/Images/page-2.jpg)
 
 ## Credits 
 
 https://www.geeksforgeeks.org/express-js-express-urlencoded-function/
+
+https://www.geeksforgeeks.org/express-js-app-delete-function/
+
+https://www.tutorialspoint.com/express-js-app-delete-method
+
+
 
 ## License 
 
